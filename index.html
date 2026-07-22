@@ -1,8 +1,54 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+    <title>Week-9-DOM-Events-Validation</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark {
+            background-color: #1a1a1a;
+            color: #f4f4f9;
+        }
+
+        .error {
+            color: #d32f2f;
+        }
+
+        .success {
+            color: #2e7d32;
+        }
+    </style>
+</head>
+
 <body>
-    <h1>Hello CBU!</h1>
+    <h1 id="main-heading">Hello CBU!</h1>
+    <p id="main-paragraph">This paragraph will change color on load.</p>
+    <button id="counter-btn">Click me</button>
+    <span id="counter-display">0</span>
+    <button id="theme-toggle-btn">Toggle Dark Mode</button>
+    <h2>Courses</h2>
+    <input type="text" id="course-search" placeholder="Search courses...">
+    <ul id="course-list"></ul>
+    <button id="add-course-btn">Add Course</button>
+
+    <h2>Sign Up</h2>
+    <form id="signup-form">
+        <p>
+            <label for="signup-name">Name</label>
+            <input type="text" id="signup-name" name="name">
+        </p>
+        <p>
+            <label for="signup-email">Email</label>
+            <input type="text" id="signup-email" name="email">
+        </p>
+        <input type="submit" value="Sign Up">
+        <p id="form-message"></p>
+    </form>
+
     <script src="script.js" defer></script>
 </body>
 

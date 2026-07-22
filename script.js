@@ -233,3 +233,97 @@ for (const s of studentsWithEdgeCase) {
         console.log(`${s.name} (Year ${s.year}): Average = ${average.toFixed(1)} -> ${grade}`);
     }
 }
+
+// Week 9 - Task 01: Grab & Change
+
+const heading = document.querySelector("#main-heading");
+const paragraph = document.querySelector("#main-paragraph");
+
+heading.textContent = "Welcome to My Interactive Page";
+paragraph.style.color = "#1565c0";
+
+// Week 9 - Task 02: Click Counter
+
+const counterBtn = document.querySelector("#counter-btn");
+const counterDisplay = document.querySelector("#counter-display");
+
+let clickCount = 0;
+
+counterBtn.addEventListener("click", () => {
+    clickCount++;
+    counterDisplay.textContent = clickCount;
+});
+
+// Week 9 - Task 03: Toggle a Theme
+
+const themeToggleBtn = document.querySelector("#theme-toggle-btn");
+
+themeToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+});
+
+// Week 9 - Task 04: Build a List from Data
+
+const courses = [
+    "Object Oriented Programming",
+    "Introduction to Web Development",
+    "Statistics",
+    "Data Structures & Algorithms",
+    "Database Systems"
+];
+
+const courseList = document.querySelector("#course-list");
+const addCourseBtn = document.querySelector("#add-course-btn");
+
+courseList.innerHTML = courses.map((course) => `<li>${course}</li>`).join("");
+
+addCourseBtn.addEventListener("click", () => {
+    const newItem = document.createElement("li");
+    newItem.textContent = "Machine Learning";
+    courseList.appendChild(newItem);
+});
+
+// Week 9 - Task 05: Live Search Filter
+
+const courseSearch = document.querySelector("#course-search");
+
+function renderCourses(courseArray) {
+    courseList.innerHTML = courseArray.map((course) => `<li>${course}</li>`).join("");
+}
+
+courseSearch.addEventListener("input", () => {
+    const searchTerm = courseSearch.value.toLowerCase();
+    const filteredCourses = courses.filter((course) =>
+        course.toLowerCase().includes(searchTerm)
+    );
+    renderCourses(filteredCourses);
+});
+
+// Week 9 - Task 06: Validate a Form
+
+const signupForm = document.querySelector("#signup-form");
+const signupName = document.querySelector("#signup-name");
+const signupEmail = document.querySelector("#signup-email");
+const formMessage = document.querySelector("#form-message");
+
+signupForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const nameValue = signupName.value.trim();
+    const emailValue = signupEmail.value.trim();
+
+    if (nameValue === "") {
+        formMessage.textContent = "Name cannot be empty.";
+        formMessage.className = "error";
+        return;
+    }
+
+    if (!emailValue.includes("@")) {
+        formMessage.textContent = "Please enter a valid email address.";
+        formMessage.className = "error";
+        return;
+    }
+
+    formMessage.textContent = "Signed up successfully!";
+    formMessage.className = "success";
+});
