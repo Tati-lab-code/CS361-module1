@@ -25,6 +25,12 @@
     box-sizing: border-box;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 body {
     font-family: var(--main-font);
     font-size: 1rem;
@@ -62,7 +68,7 @@ p {
 a {
     text-decoration: none;
     color: var(--secondary-color);
-    transition: color 0.3 ease;
+    transition: color 0.3s ease;
 }
 
 a:hover {
@@ -110,6 +116,14 @@ header {
     align-items: flex-end;
     flex-wrap: wrap;
     gap: var(--space-sm);
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .availability-badge {
@@ -225,13 +239,14 @@ section {
     background-color: var(--primary-color);
 }
 
-main {
+/*Page layout (Grid)*/
+.page-wrapper {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: var(--space-xl);
-    padding: var(--space-xl) 5%;
-    max-width: 1200px;
+    grid-template-columns: 260px 1fr;
+    gap: 1.5rem;
+    max-width: 1100px;
     margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
 aside {
@@ -294,4 +309,19 @@ tfoot {
 tfoot td {
     padding: var(--space-sm);
     border-top: 2px solid var(--primary-color);
+}
+
+/*Mobile responsiveness*/
+@media (max-width: 768px) {
+    .page-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
 }
