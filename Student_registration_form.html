@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Week-2-Lab-4-Part-A</title>
+</head>
+
+<body>
+    <header>
+        <h1>Student Registration Form</h1>
+    </header>
+    <main>
+        <form action="#" method="POST">
+            <fieldset>
+                <legend>Personal Details</legend>
+                <!--Fullname(text, required)-->
+                <p>
+                    <label for="Full-name">Full name</label>
+                    <input type="text" id="Full-name" name="full-name" required>
+                </p>
+                <!--Email(email, required)-->
+                <p>
+                    <label for="Email">Email</label>
+                    <input type="email" id="Email" name="mail" required>
+                </p>
+                <!--Phone(tel)-->
+                <p>
+                    <label for="Phone-number">Phone</label>
+                    <input type="tel" id="Phone-number" name="Phone_number" required>
+                </p>
+                <!--Date of birth(date)-->
+                <p>
+                    <label for="Date">Date of birth</label>
+                    <input type="date" id="Date" name="DOB">
+                </p>
+                <!--Gender(radio: Male/Female/Other)-->
+                <p>
+                    <label>Gender</label>
+                    <input type="radio" id="Male" name="Gender" value="Male">
+                    <label for="Male">Male</label>
+                    <input type="radio" id="Female" name="Gender" value="Female">
+                    <label for="Female">Female</label>
+                    <input type="radio" id="Other" name="Gender" value="Other">
+                    <label for="Other">Other</label>
+                </p>
+                <!--Profile photo(file, accept image/*)-->
+                <p>
+                    <label for="Picture">Profile</label>
+                    <input type="file" id="Picture" name="Profile_picture" accept="image/*">
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>Academic fields</legend>
+                <!--Student ID(text pattern='[A-Z]{2}[0-9]{6}', required)-->
+                <p>
+                    <label for="Student-ID">SIN</label>
+                    <input type="text" pattern="[0-9]{8}" id="Student-ID" name="SIN" required>
+                </p>
+                <!--Program(select: CS, IT, IS)-->
+                <p>
+                    <label for="Program">Program</label>
+                    <select id="Program" name="Prg">
+                        <option value="CS">CS</option>
+                        <option value="IS">IS</option>
+                        <option value="IT">IT</option>
+                    </select>
+                </p>
+                <!--Year of study(number, min=1, max=5)-->
+                <p>
+                    <label for="Year-of-study">Year of study</label>
+                    <input type="number" id="Year-of-study" min="1" max="5">
+                </p>
+                <!--Specialization(checkbox: Web, Security, AI, Networks)-->
+                <p>
+                    <label>Specialization: </label> <br>
+                    <input type="checkbox" id="Web" name="Specialization" value="Web">
+                    <label for="Web">Web</label>
+                    <input type="checkbox" id="Security" name="Specialization" value="Security">
+                    <label for="Security">Security</label>
+                    <input type="checkbox" id="AI" name="Specialization" value="AI">
+                    <label for="AI">AI</label>
+                    <input type="checkbox" id="Networks" name="Specialization" value="Web">
+                    <label for="Networks">Networks</label>
+                </p>
+            </fieldset>
+            <fieldset>
+                <p>
+                    <label for="About">Tell us about yourself</label><br>
+                    <textarea name="Information" id="About" rows="4">Hello...</textarea>
+                    <input type="submit" value="Register">
+                    <input type="reset">
+                </p>
+            </fieldset>
+        </form>
+    </main>
+</body>
+
+</html>
