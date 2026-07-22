@@ -81,3 +81,155 @@ gradeDecider(85);
 gradeDecider(72);
 gradeDecider(63);
 gradeDecider(30);
+
+// Week 8 - Task 01: Loop Patterns
+
+// Print 1-10
+for (let i = 1; i <= 10; i++) {
+    console.log(i);
+}
+
+// Print only even numbers 1-10
+for (let i = 1; i <= 10; i++) {
+    if (i % 2 === 0) {
+        console.log(i);
+    }
+}
+
+// Countdown from 5 to 1, then "Lift off!"
+let count = 5;
+while (count >= 1) {
+    console.log(count);
+    count--;
+}
+console.log("Lift off!");
+
+// Week 8 - Task 02: Reusable Functions
+
+function addTax(price) {
+    return price + price * 0.16;
+}
+
+function classify(score) {
+    if (score >= 80) {
+        return "Distinction";
+    } else if (score >= 70) {
+        return "Merit";
+    } else if (score >= 60) {
+        return "Credit";
+    } else if (score >= 50) {
+        return "Pass";
+    } else {
+        return "Fail";
+    }
+}
+
+function greet(name) {
+    return `Hello, ${name}! Welcome.`;
+}
+
+console.log(addTax(100));
+console.log(addTax(250));
+
+console.log(classify(85));
+console.log(classify(55));
+console.log(classify(30));
+
+console.log(greet("Mwaba"));
+console.log(greet("Alex"));
+
+// Week 8 - Task 03: Arrow Function Versions
+
+const addTaxArrow = (price) => price + price * 0.16;
+
+const classifyArrow = (score) => {
+    if (score >= 80) {
+        return "Distinction";
+    } else if (score >= 70) {
+        return "Merit";
+    } else if (score >= 60) {
+        return "Credit";
+    } else if (score >= 50) {
+        return "Pass";
+    } else {
+        return "Fail";
+    }
+};
+
+const greetArrow = (name) => `Hello, ${name}! Welcome.`;
+
+// Confirm identical results to Task 02
+console.log(addTax(100) === addTaxArrow(100));
+console.log(classify(85) === classifyArrow(85));
+console.log(greet("Mwaba") === greetArrow("Mwaba"));
+
+// Week 8 - Task 04: A Student Object
+
+const student = {
+    name: "Mwaba Kotati",
+    age: 22,
+    year: 3,
+    scores: [78, 82, 65, 90, 55],
+    getAverage() {
+        return this.scores.reduce((total, score) => total + score, 0) / this.scores.length;
+    }
+};
+
+console.log(student.getAverage());
+
+// Week 8 - Task 05: Array of Students
+
+const students = [
+    { name: "Mwaba Kotati", age: 22, year: 3, scores: [78, 82, 65, 90, 55] },
+    { name: "Alex Katongo", age: 21, year: 2, scores: [65, 70, 68, 60, 72] },
+    { name: "Maria Lombe", age: 23, year: 4, scores: [88, 90, 85, 95, 80] },
+    { name: "John Kalenga", age: 20, year: 2, scores: [40, 45, 38, 50, 42] },
+    { name: "Sara Kampimpa", age: 22, year: 3, scores: [60, 62, 58, 65, 61] }
+];
+
+// Print each name using for...of
+for (const s of students) {
+    console.log(s.name);
+}
+
+// Filter students with an average >= 50
+function getAverage(scores) {
+    return scores.reduce((total, score) => total + score, 0) / scores.length;
+}
+
+const passingStudents = students.filter((s) => getAverage(s.scores) >= 50);
+console.log(passingStudents);
+
+// Map to get just their names
+const studentNames = students.map((s) => s.name);
+console.log(studentNames);
+
+// Week 8 - Task 06: Put It Together
+
+const studentsWithEdgeCase = [
+    ...students,
+    { name: "Noah Ali", age: 21, year: 2, scores: [] }
+];
+
+function getAverageSafe(scores) {
+    try {
+        if (scores.length === 0) {
+            throw new Error("No scores available");
+        }
+        return scores.reduce((total, score) => total + score, 0) / scores.length;
+    } catch (error) {
+        console.log(`Could not calculate average: ${error.message}`);
+        return null;
+    }
+}
+
+for (const s of studentsWithEdgeCase) {
+    const average = getAverageSafe(s.scores);
+
+    if (average === null) {
+        console.log(`${s.name} (Year ${s.year}): No average available - Ungraded`);
+    } else {
+        const grade = classify(average);
+        console.log(`${s.name} (Year ${s.year}): Average = ${average.toFixed(1)} -> ${grade}`);
+    }
+}
